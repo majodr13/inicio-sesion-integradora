@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHEF EN CASA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dNrY7Y1Ufi1GjFsL2zyJ7uxZYhCjF4G9plAhpib5A/C6Ezclw6Bp7zSi3upvGRph9P9K1Szq54U4hzxZC2vW7w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <input type="checkbox" name="" id="toggler">
+        <label for="toggler" class="fas fa-bars"></label>
+        <a href="#" class="logo">CHEF EN CASA</a>
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contacts</a>
+        </nav>
+        <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="#" class="fas fa-user"></a>
+        </div>
+    </header>
+    <div class="formulario">
+        <div id="login-form">
+            <h1>Inicio de sesión</h1>
+            <form method="post">
+                <div class="username">
+                    <input type="text" required>
+                    <label>Nombre de Usuario</label>
+                </div>
+                <div class="contraseña">
+                    <input type="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="recordar">¿Olvidó su contraseña?</div>
+                <input type="submit" value="Iniciar" class="btn-inicio">
+                <div class="registrarse">
+                    ¿No tienes cuenta? <a href="#" id="show-register">registrate</a>
+                </div>
+            </form>
+        </div>
+        <div id="register-form" class="hidden">
+            <form method="post">
+                <div class="username">
+                    <input type="text" required>
+                    <label>Nombre de Usuario</label>
+                </div>
+                <div class="email">
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="contraseña">
+                    <input type="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="confirmar-contraseña">
+                    <input type="password" required>
+                    <label>Confirmar Contraseña</label>
+                </div>
+                <input type="submit" value="Registrar" class="btn-inicio">
+                <div class="iniciar-sesion">
+                    ¿Ya tienes cuenta? <a href="#" id="show-login">Iniciar sesión</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const inputs = document.querySelectorAll('.username input, .contraseña input, .email input, .confirmar-contraseña input');
+            const showRegister = document.getElementById('show-register');
+            const showLogin = document.getElementById('show-login');
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+
+            inputs.forEach(input => {
+                if (input.value.trim() !== '') {
+                    input.nextElementSibling.classList.add('fixed');
+                }
+
+                input.addEventListener('input', function () {
+                    if (this.value.trim() !== '') {
+                        this.nextElementSibling.classList.add('fixed');
+                    } else {
+                        this.nextElementSibling.classList.remove('fixed');
+                    }
+                });
+
+                input.addEventListener('blur', function () {
+                    if (this.value.trim() !== '') {
+                        this.nextElementSibling.classList.add('fixed');
+                    } else {
+                        this.nextElementSibling.classList.remove('fixed');
+                    }
+                });
+            });
+
+            showRegister.addEventListener('click', function (e) {
+                e.preventDefault();
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+            });
+
+            showLogin.addEventListener('click', function (e) {
+                e.preventDefault();
+                registerForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
